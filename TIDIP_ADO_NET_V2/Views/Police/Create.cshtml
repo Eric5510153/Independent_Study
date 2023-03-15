@@ -4,19 +4,18 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
 
-
-@using (Html.BeginForm()) 
+<form action="@Url.Action("Create")"></form>
+@using (Html.BeginForm("Create", "Police", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Police</h4>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.PoliceName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PoliceName, "警察單位名稱", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PoliceName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PoliceName, "", new { @class = "text-danger" })
@@ -24,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.County_City, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.County_City, "縣市", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.County_City, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.County_City, "", new { @class = "text-danger" })
@@ -32,49 +31,67 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Area, "鄉、鎮、市、區", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
             </div>
+
         </div>
 
+
+
         <div class="form-group">
-            @Html.LabelFor(model => model.PoliceAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PoliceAddress, "地址", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PoliceAddress, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PoliceAddress, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.PoliceCreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PoliceCreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PoliceCreatedDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PoliceTel, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PoliceTel, "電話", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PoliceTel, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PoliceTel, "", new { @class = "text-danger" })
             </div>
         </div>
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.PoliceCreatedDate, "建立資訊時間", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PoliceCreatedDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PoliceCreatedDate, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button class="btn btn-success">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                    </svg>&nbsp建立
+                </button>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="~/jQuery-TWzipcode-master/jquery.twzipcode.js"></script>
+<script src="~/jQuery-TWzipcode-master/jquery.twzipcode.min.js"></script>
+<script>
+    $("#zipcode3").twzipcode({
+        "zipcodeIntoDistrict": true
+        /*"css": ["city form-control", "town form-control"],*/
+        //"countyName": "city", // 指定城市 select name
+        //"districtName": "town" // 指定地區 select name
+    });
+</script>

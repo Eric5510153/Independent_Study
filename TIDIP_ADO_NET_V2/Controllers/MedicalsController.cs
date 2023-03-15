@@ -46,17 +46,25 @@ namespace TIDIP_ADO_NET_V2.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MedicalID,MedicalName,County_City,Area,MedicalAddress,MedicalCreatedDate,MedicalTel")] Medicals medicals)
+        public ActionResult Create(/*[Bind(Include = "MedicalID,MedicalName,County_City,Area,MedicalAddress,MedicalCreatedDate,MedicalTel")] */Medicals medicals)
         {
+
+            db.Medicals.Add(medicals);
+            medicals.MedicalCreatedDate = DateTime.Now;
+
             if (ModelState.IsValid)
             {
-                db.Medicals.Add(medicals);
+
+
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
             return View(medicals);
         }
+
+
 
         // GET: Medicals/Edit/5
         public ActionResult Edit(int? id)
@@ -80,6 +88,9 @@ namespace TIDIP_ADO_NET_V2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MedicalID,MedicalName,County_City,Area,MedicalAddress,MedicalCreatedDate,MedicalTel")] Medicals medicals)
         {
+
+            medicals.MedicalCreatedDate = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Entry(medicals).State = EntityState.Modified;

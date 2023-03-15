@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -38,7 +39,7 @@ namespace TIDIP_ADO_NET_V2.Controllers
         // GET: Admins/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: Admins/Create
@@ -46,16 +47,19 @@ namespace TIDIP_ADO_NET_V2.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AdIdentity,AdName,AdBrithday,AdCreatedDate,AdAccount,AdPassword,AdEmail")] Admins admins)
+        public ActionResult Create(/*[Bind(Include = "AdIdentity,AdName,AdBrithday,AdCreatedDate,AdAccount,AdPassword,AdEmail")]*/ Admins admins)
         {
+
+            admins.AdCreatedDate = DateTime.Today;
+            db.Admins.Add(admins);
             if (ModelState.IsValid)
             {
-                db.Admins.Add(admins);
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(admins);
+            return PartialView(admins);
         }
 
         // GET: Admins/Edit/5

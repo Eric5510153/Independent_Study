@@ -46,16 +46,56 @@ namespace TIDIP_ADO_NET_V2.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MbIdentity,MbName,MbPhone,MbEmail,MbBrithday,MbCreatedDate,MbAccount,MbPassword")] Members members)
+        public ActionResult Create(/*[Bind(Include = "MbIdentity,MbName,MbPhone,MbEmail,MbBrithday,MbCreatedDate,MbAccount,MbPassword")]*/ Members members)
         {
+           
+            var mbID = db.Members.Find(members.MbIdentity);
+            var mbEm = db.Members.Where(m => m.MbEmail == members.MbEmail).FirstOrDefault();
+            var mbAc = db.Members.Where(m => m.MbAccount == members.MbAccount).FirstOrDefault();
+            var mbPh = db.Members.Where(m => m.MbPhone == members.MbPhone).FirstOrDefault();
+            if (mbID != null)
+            {
+
+                ViewBag.IDRepCheck = "身份證字號已註冊";
+                return View(members);
+            }
+
+            if (mbPh != null)
+            {
+
+                ViewBag.PhRepCheck = "此電話已註冊";
+                return View(members);
+            }
+
+            if (mbEm != null)
+            {
+
+                ViewBag.EmRepCheck = "此電子郵件已註冊";
+                return View(members);
+            }
+
+            if (mbAc != null)
+            {
+
+                ViewBag.AcRepCheck = "帳號已註冊";
+                return View(members);
+            }
+
+            members.MbCreatedDate = DateTime.Now;
+            db.Members.Add(members);
             if (ModelState.IsValid)
             {
-                db.Members.Add(members);
+
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("MbCreateView");
             }
 
             return View(members);
+        }
+        public ActionResult MbCreateView()
+        {
+            return View(db.Members.ToList());
         }
 
         // GET: Members/Edit/5

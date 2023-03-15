@@ -1,0 +1,27 @@
+﻿@model IEnumerable<TIDIP_ADO_NET_V2.Models.Members>
+
+@{
+    ViewBag.Title = "註冊成功";
+}
+
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<div class="table mt-5 text-center ">
+    <h1 class="text-success"><strong>註冊成功，請登入</strong></h1>
+
+</div>
+<div class="text-center">
+    @Html.ActionLink("進到登入畫面", "MBLogin", "Login", null, new { @class = "btn btn-success" })
+</div>
+
+
+<div class="table mt-5">
+
+    <p>
+        @Html.ActionLink("返回災害事故資訊列表", "Index", "Disaster_Accident")
+    </p>
+
+</div>

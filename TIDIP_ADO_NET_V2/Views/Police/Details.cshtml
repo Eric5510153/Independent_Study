@@ -1,57 +1,64 @@
 ﻿@model TIDIP_ADO_NET_V2.Models.Police
 
 @{
+    Layout = "";
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Police</h4>
+    <div class="text-center">
+        <h3>@Html.DisplayFor(model => model.PoliceName)</h3>
+    </div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PoliceName)
+        <dt class="mt-5">
+            @*@Html.DisplayNameFor(model => model.PoliceName)*@
+            警察單位名稱
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.PoliceName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.County_City)
+        <dt class="mt-3">
+            @*@Html.DisplayNameFor(model => model.County_City)*@
+            縣市
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.County_City)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Area)
+        <dt class="mt-3">
+            @*@Html.DisplayNameFor(model => model.Area)*@
+            鄉、鎮、市、區
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Area)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PoliceAddress)
+        <dt class="mt-3">
+            @*@Html.DisplayNameFor(model => model.PoliceAddress)*@
+            地址
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.PoliceAddress)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PoliceCreatedDate)
+        <dt class="mt-3">
+            @*@Html.DisplayNameFor(model => model.PoliceCreatedDate)*@
+            資訊建立時間
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.PoliceCreatedDate)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PoliceTel)
+        <dt class="mt-3">
+            @*@Html.DisplayNameFor(model => model.PoliceTel)*@
+            電話
         </dt>
 
         <dd>
@@ -60,7 +67,7 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PoliceID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PoliceID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

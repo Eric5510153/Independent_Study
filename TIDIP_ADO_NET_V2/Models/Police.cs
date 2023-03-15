@@ -6,6 +6,12 @@
 //     如果重新產生程式碼，將會覆寫對這個檔案的手動變更。
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
 namespace TIDIP_ADO_NET_V2.Models
 {
@@ -15,11 +21,14 @@ namespace TIDIP_ADO_NET_V2.Models
     public partial class Police
     {
         public int PoliceID { get; set; }
+        [Required]
         public string PoliceName { get; set; }
         public string County_City { get; set; }
         public string Area { get; set; }
+        [Required]
         public string PoliceAddress { get; set; }
         public System.DateTime PoliceCreatedDate { get; set; }
+        [Required]
         public string PoliceTel { get; set; }
     }
 }

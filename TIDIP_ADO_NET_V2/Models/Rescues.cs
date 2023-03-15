@@ -6,7 +6,12 @@
 //     如果重新產生程式碼，將會覆寫對這個檔案的手動變更。
 // </auto-generated>
 //------------------------------------------------------------------------------
-
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 namespace TIDIP_ADO_NET_V2.Models
 {
     using System;
@@ -15,11 +20,14 @@ namespace TIDIP_ADO_NET_V2.Models
     public partial class Rescues
     {
         public int RescueId { get; set; }
+        [Required]
         public string RescueName { get; set; }
         public string County_City { get; set; }
         public string Area { get; set; }
+        [Required]
         public string RescueAddress { get; set; }
         public System.DateTime RescueCreatedDate { get; set; }
+        [Required]
         public string RescueTel { get; set; }
     }
 }

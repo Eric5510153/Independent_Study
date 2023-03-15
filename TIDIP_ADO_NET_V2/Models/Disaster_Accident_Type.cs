@@ -6,6 +6,12 @@
 //     如果重新產生程式碼，將會覆寫對這個檔案的手動變更。
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
 namespace TIDIP_ADO_NET_V2.Models
 {
@@ -19,8 +25,11 @@ namespace TIDIP_ADO_NET_V2.Models
         {
             this.Disaster_Accident = new HashSet<Disaster_Accident>();
         }
-    
+        [Required(ErrorMessage = "DATypeID為必填欄位")]
         public string DATypeID { get; set; }
+
+
+        [Required(ErrorMessage = "DATypeName為必填欄位")]
         public string DATypeName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

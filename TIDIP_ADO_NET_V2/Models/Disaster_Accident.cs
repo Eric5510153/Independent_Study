@@ -6,6 +6,12 @@
 //     如果重新產生程式碼，將會覆寫對這個檔案的手動變更。
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
 namespace TIDIP_ADO_NET_V2.Models
 {
@@ -15,10 +21,15 @@ namespace TIDIP_ADO_NET_V2.Models
     public partial class Disaster_Accident
     {
         public int DAID { get; set; }
+        [Required(ErrorMessage = "地點為必填欄位")]
         public string DALocation { get; set; }
+
         public string County_City { get; set; }
+
         public string Area { get; set; }
         public System.DateTime DACreatedDate { get; set; }
+
+        [Required(ErrorMessage = "描述為必填欄位")]
         public string DAMessage { get; set; }
         public string MbIdentity { get; set; }
         public string DATypeID { get; set; }

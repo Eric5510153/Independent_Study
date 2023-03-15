@@ -6,7 +6,12 @@
 //     如果重新產生程式碼，將會覆寫對這個檔案的手動變更。
 // </auto-generated>
 //------------------------------------------------------------------------------
-
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 namespace TIDIP_ADO_NET_V2.Models
 {
     using System;
@@ -19,17 +24,76 @@ namespace TIDIP_ADO_NET_V2.Models
         {
             this.Disaster_Accident = new HashSet<Disaster_Accident>();
         }
-    
+        [CheckIDNumber(ErrorMessage = "身份證格式錯誤")]
+        [Required(ErrorMessage = "身份證號為必填欄位")]
         public string MbIdentity { get; set; }
+        [Required(ErrorMessage = "姓名為必填欄位")]
         public string MbName { get; set; }
+        [RegularExpression("[0-9]{10}", ErrorMessage = "電話格式錯誤")]
+        [Required(ErrorMessage = "會員電話為必填欄位")]
         public string MbPhone { get; set; }
+        [EmailAddress(ErrorMessage = "電子郵件格式錯誤")]
+        [Required(ErrorMessage = "電子郵件為必填欄位")]
         public string MbEmail { get; set; }
+        [Required(ErrorMessage = "生日為必填欄位")]
+        
         public System.DateTime MbBrithday { get; set; }
+
+        
         public System.DateTime MbCreatedDate { get; set; }
+        [Required(ErrorMessage = "帳號為必填欄位")]
+        [StringLength(20, ErrorMessage = "帳號不可超過20字")]
+        [RegularExpression("[A-Za-z]{1}[A-Za-z0-9]{4,19}", ErrorMessage = "帳號格式錯誤,第一碼必須為英文或長度過短")]
         public string MbAccount { get; set; }
+        [Required(ErrorMessage = "密碼為必填欄位")]
+        [DataType(DataType.Password)]
         public string MbPassword { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Disaster_Accident> Disaster_Accident { get; set; }
+
+
     }
+
+    public class CheckIDNumber : ValidationAttribute
+    {
+        public CheckIDNumber()
+        {
+            ErrorMessage = "請輸入正確身分證字號";
+        }
+        public override bool IsValid(object value)
+        {
+            string idNumber = value.ToString();
+
+            const string eng = "ABCDEFGHJKLMNPQRSTUVXYZWZIO";
+            string t = idNumber.Substring(0, 1);
+            int intEng = eng.IndexOf(t) + 10;
+            int n1 = intEng / 10;
+            int n2 = intEng % 10;
+
+            int sum = 0;
+
+
+            sum = n1 * 1 + n2 * 9;
+
+            for (int i = 1; i < 9; i++)
+            {
+                sum += Convert.ToInt32(idNumber.Substring(i, 1)) * (9 - i);
+            }
+
+            sum += Convert.ToInt32(idNumber.Substring(9, 1));
+
+            if (sum % 10 == 0)
+                return true;
+
+
+            return false;
+
+
+
+        }
+
+    }
+
+
 }

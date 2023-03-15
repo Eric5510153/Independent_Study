@@ -1,74 +1,98 @@
 ﻿@model TIDIP_ADO_NET_V2.Models.Disaster_Accident
 
 @{
+    Layout = "";
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Disaster_Accident</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DALocation)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DALocation)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.County_City)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.County_City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Area)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Area)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DACreatedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DACreatedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DAMessage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DAMessage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Disaster_Accident_Type.DATypeName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Disaster_Accident_Type.DATypeName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Members.MbName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Members.MbName)
-        </dd>
-
-    </dl>
+<style>
+    #nameStyle > span {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+</style>
+<div class="text-center">
+    <span style="font-weight:bold; font-size:2.0rem;" class="text-center">災害事故詳細內容</span>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.DAID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div>
+
+    <hr />
+    <div class="dl-horizontal " id="nameStyle">
+        <span>
+            @*@Html.DisplayNameFor(model => model.DALocation)*@
+            災害事故位置
+        </span>
+        <p>
+            @Html.DisplayFor(model => model.DALocation)
+        </p>
+
+        <span>
+            @*@Html.DisplayNameFor(model => model.County_City)*@
+            縣市
+        </span>
+
+        <p>
+            @Html.DisplayFor(model => model.County_City)
+        </p>
+
+        <span>
+            @*@Html.DisplayNameFor(model => model.Area)*@
+            鄉、鎮、市、區
+        </span>
+
+        <p>
+            @Html.DisplayFor(model => model.Area)
+        </p>
+
+        <span>
+            @*@Html.DisplayNameFor(model => model.DACreatedDate)*@
+            資訊建立時間
+        </span>
+
+        <p>
+            @Html.DisplayFor(model => model.DACreatedDate)
+        </p>
+
+        <span>
+            @*@Html.DisplayNameFor(model => model.Disaster_Accident_Type.DATypeName)*@
+            災害事故類型
+        </span>
+
+        <p>
+            @Html.DisplayFor(model => model.Disaster_Accident_Type.DATypeName)
+        </p>
+
+        <span>
+            @*@Html.DisplayNameFor(model => model.DAMessage)*@
+            災害事故描述
+        </span>
+
+        <p>
+            @Html.DisplayFor(model => model.DAMessage)
+        </p>
+
+        <!--<span>-->
+        @*@Html.DisplayNameFor(model => model.MbIdentity)*@
+        <!--建立資訊會員
+        </span>
+
+         <p>-->
+        @*@Html.DisplayFor(model => model.MbIdentity)*@
+        <!--</p>-->
+
+        <span>
+            @*@Html.DisplayNameFor(model => model.Members.MbName)*@
+            建立資訊會員
+        </span>
+
+        <p>
+            @Html.DisplayFor(model => model.Members.MbAccount)
+
+        </p>
+
+    </div>
+</div>
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.DAID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

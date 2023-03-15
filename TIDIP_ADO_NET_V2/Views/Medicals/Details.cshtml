@@ -1,57 +1,66 @@
 ﻿@model TIDIP_ADO_NET_V2.Models.Medicals
 
 @{
+
+    Layout = "";
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Medicals</h4>
+    <div class="text-center">
+        <h3>@Html.DisplayFor(model => model.MedicalName)</h3>
+    </div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MedicalName)
+        <dt class="mt-5">
+            @*@Html.DisplayNameFor(model => model.MedicalName)*@
+            醫療單位名稱
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.MedicalName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.County_City)
+        <dt class="mt-3">
+            @*@Html.DisplayNameFor(model => model.County_City)*@
+            縣市
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.County_City)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Area)
+        <dt class="mt-3">
+            @*@Html.DisplayNameFor(model => model.Area)*@
+            鄉、鎮、市、區
+
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Area)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MedicalAddress)
+        <dt class="mt-3">
+            @*@Html.DisplayNameFor(model => model.MedicalAddress)*@
+            地址
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.MedicalAddress)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MedicalCreatedDate)
+        <dt class="mt-3">
+            @*@Html.DisplayNameFor(model => model.MedicalCreatedDate)*@
+            資訊建立時間
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.MedicalCreatedDate)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MedicalTel)
+        <dt class="mt-3">
+            @*@Html.DisplayNameFor(model => model.MedicalTel)*@
+            電話
         </dt>
 
         <dd>
@@ -60,7 +69,7 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MedicalID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MedicalID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

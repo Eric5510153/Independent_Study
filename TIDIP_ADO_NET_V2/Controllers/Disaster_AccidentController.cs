@@ -55,8 +55,10 @@ namespace TIDIP_ADO_NET_V2.Controllers
 
             //var mbID = ((Members)Session["mb"]).MbIdentity.FirstOrDefault();
 
-            disaster_Accident.DACreatedDate = DateTime.Now;
+            var mbID = ((Members)Session["mb"]).MbIdentity;
 
+            disaster_Accident.DACreatedDate = DateTime.Now;
+            disaster_Accident.MbIdentity= mbID;
             db.Disaster_Accident.Add(disaster_Accident);
             if (ModelState.IsValid)
             {

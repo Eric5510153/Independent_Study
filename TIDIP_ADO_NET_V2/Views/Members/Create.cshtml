@@ -1,30 +1,35 @@
 ﻿@model TIDIP_ADO_NET_V2.Models.Members
 
+
 @{
     ViewBag.Title = "Create";
+
 }
+<div class="mt-3">
 
-<h2>Create</h2>
+    <h2><strong>註冊會員</strong></h2>
 
+</div>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Members</h4>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.MbIdentity, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MbIdentity, "身份證字號", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MbIdentity, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MbIdentity, "", new { @class = "text-danger" })
+                <span class="text-danger">@ViewBag.IDRepCheck</span>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MbName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MbName, "姓名", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MbName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MbName, "", new { @class = "text-danger" })
@@ -32,65 +37,71 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MbPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MbPhone, "電話", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MbPhone, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MbPhone, "", new { @class = "text-danger" })
+                <span class="text-danger">@ViewBag.PhRepCheck</span>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MbEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MbEmail, "電子郵件", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MbEmail, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MbEmail, "", new { @class = "text-danger" })
+                <span class="text-danger">@ViewBag.EmRepCheck</span>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MbBrithday, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MbBrithday, "生日", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MbBrithday, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.MbBrithday, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                 @Html.ValidationMessageFor(model => model.MbBrithday, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MbCreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MbCreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MbCreatedDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.MbCreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MbCreatedDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MbCreatedDate, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MbAccount, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MbAccount, "會員帳號", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MbAccount, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MbAccount, "", new { @class = "text-danger" })
+                <span class="text-danger">@ViewBag.AcRepCheck</span>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MbPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MbPassword, "會員密碼", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MbPassword, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MbPassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+
+
+        <div class="form-group mt-2">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="註冊" class="btn btn-success" />
             </div>
         </div>
     </div>
+
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回災害事故資訊列表", "Index", "Disaster_Accident")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

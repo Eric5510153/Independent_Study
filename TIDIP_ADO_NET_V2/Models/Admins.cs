@@ -6,6 +6,12 @@
 //     如果重新產生程式碼，將會覆寫對這個檔案的手動變更。
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
 namespace TIDIP_ADO_NET_V2.Models
 {
@@ -19,6 +25,7 @@ namespace TIDIP_ADO_NET_V2.Models
         public System.DateTime AdBrithday { get; set; }
         public System.DateTime AdCreatedDate { get; set; }
         public string AdAccount { get; set; }
+        [DataType(DataType.Password)]
         public string AdPassword { get; set; }
         public string AdEmail { get; set; }
     }

@@ -32,13 +32,13 @@ namespace TIDIP_ADO_NET_V2.Controllers
             {
                 return HttpNotFound();
             }
-            return View(police);
+            return PartialView(police);
         }
 
         // GET: Police/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: Police/Create
@@ -46,11 +46,15 @@ namespace TIDIP_ADO_NET_V2.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PoliceID,PoliceName,County_City,Area,PoliceAddress,PoliceCreatedDate,PoliceTel")] Police police)
+        public ActionResult Create(/*[Bind(Include = "PoliceID,PoliceName,County_City,Area,PoliceAddress,PoliceCreatedDate,PoliceTel")]*/ Police police)
         {
+            db.Police.Add(police);
+            police.PoliceCreatedDate = DateTime.Now;
             if (ModelState.IsValid)
             {
-                db.Police.Add(police);
+
+
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -80,6 +84,9 @@ namespace TIDIP_ADO_NET_V2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "PoliceID,PoliceName,County_City,Area,PoliceAddress,PoliceCreatedDate,PoliceTel")] Police police)
         {
+
+            police.PoliceCreatedDate = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Entry(police).State = EntityState.Modified;

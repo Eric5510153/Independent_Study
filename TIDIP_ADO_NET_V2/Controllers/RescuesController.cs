@@ -32,32 +32,36 @@ namespace TIDIP_ADO_NET_V2.Controllers
             {
                 return HttpNotFound();
             }
-            return View(rescues);
+            return PartialView(rescues);
         }
 
         // GET: Rescues/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
+
 
         // POST: Rescues/Create
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RescueId,RescueName,County_City,Area,RescueAddress,RescueCreatedDate,RescueTel")] Rescues rescues)
+        public ActionResult Create(/*[Bind(Include = "RescueId,RescueName,County_City,Area,RescueAddress,RescueCreatedDate,RescueTel")]*/ Rescues rescues)
         {
+
+            db.Rescues.Add(rescues);
+            rescues.RescueCreatedDate = DateTime.Now;
+
             if (ModelState.IsValid)
             {
-                db.Rescues.Add(rescues);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(rescues);
         }
-
         // GET: Rescues/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -80,6 +84,8 @@ namespace TIDIP_ADO_NET_V2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "RescueId,RescueName,County_City,Area,RescueAddress,RescueCreatedDate,RescueTel")] Rescues rescues)
         {
+
+            rescues.RescueCreatedDate = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Entry(rescues).State = EntityState.Modified;
