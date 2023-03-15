@@ -1,0 +1,72 @@
+﻿@model TIDIP_ADO_NET_V2.Models.Rescues
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Rescues</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RescueName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RescueName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.County_City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.County_City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RescueAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RescueAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RescueCreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RescueCreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RescueTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RescueTel)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

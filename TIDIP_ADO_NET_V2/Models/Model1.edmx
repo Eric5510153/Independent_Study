@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TIDIP_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="AdIdentity" />
+          </Key>
+          <Property Name="AdIdentity" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AdName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="AdBrithday" Type="datetime" Nullable="false" />
+          <Property Name="AdCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="AdAccount" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AdPassword" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AdEmail" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disaster_Accident">
+          <Key>
+            <PropertyRef Name="DAID" />
+          </Key>
+          <Property Name="DAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DALocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="County_City" Type="nvarchar(max)" />
+          <Property Name="Area" Type="nvarchar(max)" />
+          <Property Name="DACreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="DAMessage" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MbIdentity" Type="nvarchar" MaxLength="10" />
+          <Property Name="DATypeID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Disaster_Accident_Type">
+          <Key>
+            <PropertyRef Name="DATypeID" />
+          </Key>
+          <Property Name="DATypeID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DATypeName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medicals">
+          <Key>
+            <PropertyRef Name="MedicalID" />
+          </Key>
+          <Property Name="MedicalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicalName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="County_City" Type="nvarchar(max)" />
+          <Property Name="Area" Type="nvarchar(max)" />
+          <Property Name="MedicalAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MedicalCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="MedicalTel" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="MbIdentity" />
+          </Key>
+          <Property Name="MbIdentity" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MbName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="MbPhone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MbEmail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MbBrithday" Type="datetime" Nullable="false" />
+          <Property Name="MbCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="MbAccount" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MbPassword" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Police">
+          <Key>
+            <PropertyRef Name="PoliceID" />
+          </Key>
+          <Property Name="PoliceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PoliceName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="County_City" Type="nvarchar(max)" />
+          <Property Name="Area" Type="nvarchar(max)" />
+          <Property Name="PoliceAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PoliceCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="PoliceTel" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rescues">
+          <Key>
+            <PropertyRef Name="RescueId" />
+          </Key>
+          <Property Name="RescueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RescueName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="County_City" Type="nvarchar(max)" />
+          <Property Name="Area" Type="nvarchar(max)" />
+          <Property Name="RescueAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RescueCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="RescueTel" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Disaster_Accident_dbo_Disaster_Accident_Type_DATypeID">
+          <End Role="Disaster_Accident_Type" Type="Self.Disaster_Accident_Type" Multiplicity="0..1" />
+          <End Role="Disaster_Accident" Type="Self.Disaster_Accident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disaster_Accident_Type">
+              <PropertyRef Name="DATypeID" />
+            </Principal>
+            <Dependent Role="Disaster_Accident">
+              <PropertyRef Name="DATypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Disaster_Accident_dbo_Members_MbIdentity">
+          <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+          <End Role="Disaster_Accident" Type="Self.Disaster_Accident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MbIdentity" />
+            </Principal>
+            <Dependent Role="Disaster_Accident">
+              <PropertyRef Name="MbIdentity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TIDIP_V2ModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disaster_Accident" EntityType="Self.Disaster_Accident" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disaster_Accident_Type" EntityType="Self.Disaster_Accident_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicals" EntityType="Self.Medicals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Police" EntityType="Self.Police" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rescues" EntityType="Self.Rescues" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Disaster_Accident_dbo_Disaster_Accident_Type_DATypeID" Association="Self.FK_dbo_Disaster_Accident_dbo_Disaster_Accident_Type_DATypeID">
+            <End Role="Disaster_Accident_Type" EntitySet="Disaster_Accident_Type" />
+            <End Role="Disaster_Accident" EntitySet="Disaster_Accident" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Disaster_Accident_dbo_Members_MbIdentity" Association="Self.FK_dbo_Disaster_Accident_dbo_Members_MbIdentity">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Disaster_Accident" EntitySet="Disaster_Accident" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TIDIP_V2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="AdIdentity" />
+          </Key>
+          <Property Name="AdIdentity" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdBrithday" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AdCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AdAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disaster_Accident">
+          <Key>
+            <PropertyRef Name="DAID" />
+          </Key>
+          <Property Name="DAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DALocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="County_City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DACreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DAMessage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MbIdentity" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DATypeID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Disaster_Accident_Type" Relationship="Self.FK_dbo_Disaster_Accident_dbo_Disaster_Accident_Type_DATypeID" FromRole="Disaster_Accident" ToRole="Disaster_Accident_Type" />
+          <NavigationProperty Name="Members" Relationship="Self.FK_dbo_Disaster_Accident_dbo_Members_MbIdentity" FromRole="Disaster_Accident" ToRole="Members" />
+        </EntityType>
+        <EntityType Name="Disaster_Accident_Type">
+          <Key>
+            <PropertyRef Name="DATypeID" />
+          </Key>
+          <Property Name="DATypeID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DATypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Disaster_Accident" Relationship="Self.FK_dbo_Disaster_Accident_dbo_Disaster_Accident_Type_DATypeID" FromRole="Disaster_Accident_Type" ToRole="Disaster_Accident" />
+        </EntityType>
+        <EntityType Name="Medicals">
+          <Key>
+            <PropertyRef Name="MedicalID" />
+          </Key>
+          <Property Name="MedicalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicalName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="County_City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MedicalAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MedicalCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MedicalTel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="MbIdentity" />
+          </Key>
+          <Property Name="MbIdentity" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MbName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MbPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MbEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MbBrithday" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MbCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MbAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MbPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Disaster_Accident" Relationship="Self.FK_dbo_Disaster_Accident_dbo_Members_MbIdentity" FromRole="Members" ToRole="Disaster_Accident" />
+        </EntityType>
+        <EntityType Name="Police">
+          <Key>
+            <PropertyRef Name="PoliceID" />
+          </Key>
+          <Property Name="PoliceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PoliceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="County_City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PoliceAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PoliceCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PoliceTel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rescues">
+          <Key>
+            <PropertyRef Name="RescueId" />
+          </Key>
+          <Property Name="RescueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RescueName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="County_City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RescueAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RescueCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RescueTel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Disaster_Accident_dbo_Disaster_Accident_Type_DATypeID">
+          <End Role="Disaster_Accident_Type" Type="Self.Disaster_Accident_Type" Multiplicity="0..1" />
+          <End Role="Disaster_Accident" Type="Self.Disaster_Accident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disaster_Accident_Type">
+              <PropertyRef Name="DATypeID" />
+            </Principal>
+            <Dependent Role="Disaster_Accident">
+              <PropertyRef Name="DATypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Disaster_Accident_dbo_Members_MbIdentity">
+          <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+          <End Role="Disaster_Accident" Type="Self.Disaster_Accident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MbIdentity" />
+            </Principal>
+            <Dependent Role="Disaster_Accident">
+              <PropertyRef Name="MbIdentity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TIDIP_V2Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Admins" EntityType="Self.Admins" />
+          <EntitySet Name="Disaster_Accident" EntityType="Self.Disaster_Accident" />
+          <EntitySet Name="Disaster_Accident_Type" EntityType="Self.Disaster_Accident_Type" />
+          <EntitySet Name="Medicals" EntityType="Self.Medicals" />
+          <EntitySet Name="Members" EntityType="Self.Members" />
+          <EntitySet Name="Police" EntityType="Self.Police" />
+          <EntitySet Name="Rescues" EntityType="Self.Rescues" />
+          <AssociationSet Name="FK_dbo_Disaster_Accident_dbo_Disaster_Accident_Type_DATypeID" Association="Self.FK_dbo_Disaster_Accident_dbo_Disaster_Accident_Type_DATypeID">
+            <End Role="Disaster_Accident_Type" EntitySet="Disaster_Accident_Type" />
+            <End Role="Disaster_Accident" EntitySet="Disaster_Accident" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Disaster_Accident_dbo_Members_MbIdentity" Association="Self.FK_dbo_Disaster_Accident_dbo_Members_MbIdentity">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Disaster_Accident" EntitySet="Disaster_Accident" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TIDIP_V2ModelStoreContainer" CdmEntityContainer="TIDIP_V2Entities2">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="TIDIP_V2Model.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="TIDIP_V2Model.Admins">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="AdIdentity" ColumnName="AdIdentity" />
+                <ScalarProperty Name="AdName" ColumnName="AdName" />
+                <ScalarProperty Name="AdBrithday" ColumnName="AdBrithday" />
+                <ScalarProperty Name="AdCreatedDate" ColumnName="AdCreatedDate" />
+                <ScalarProperty Name="AdAccount" ColumnName="AdAccount" />
+                <ScalarProperty Name="AdPassword" ColumnName="AdPassword" />
+                <ScalarProperty Name="AdEmail" ColumnName="AdEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disaster_Accident">
+            <EntityTypeMapping TypeName="TIDIP_V2Model.Disaster_Accident">
+              <MappingFragment StoreEntitySet="Disaster_Accident">
+                <ScalarProperty Name="DAID" ColumnName="DAID" />
+                <ScalarProperty Name="DALocation" ColumnName="DALocation" />
+                <ScalarProperty Name="County_City" ColumnName="County_City" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="DACreatedDate" ColumnName="DACreatedDate" />
+                <ScalarProperty Name="DAMessage" ColumnName="DAMessage" />
+                <ScalarProperty Name="MbIdentity" ColumnName="MbIdentity" />
+                <ScalarProperty Name="DATypeID" ColumnName="DATypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disaster_Accident_Type">
+            <EntityTypeMapping TypeName="TIDIP_V2Model.Disaster_Accident_Type">
+              <MappingFragment StoreEntitySet="Disaster_Accident_Type">
+                <ScalarProperty Name="DATypeID" ColumnName="DATypeID" />
+                <ScalarProperty Name="DATypeName" ColumnName="DATypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicals">
+            <EntityTypeMapping TypeName="TIDIP_V2Model.Medicals">
+              <MappingFragment StoreEntitySet="Medicals">
+                <ScalarProperty Name="MedicalID" ColumnName="MedicalID" />
+                <ScalarProperty Name="MedicalName" ColumnName="MedicalName" />
+                <ScalarProperty Name="County_City" ColumnName="County_City" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="MedicalAddress" ColumnName="MedicalAddress" />
+                <ScalarProperty Name="MedicalCreatedDate" ColumnName="MedicalCreatedDate" />
+                <ScalarProperty Name="MedicalTel" ColumnName="MedicalTel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="TIDIP_V2Model.Members">
+              <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="MbIdentity" ColumnName="MbIdentity" />
+                <ScalarProperty Name="MbName" ColumnName="MbName" />
+                <ScalarProperty Name="MbPhone" ColumnName="MbPhone" />
+                <ScalarProperty Name="MbEmail" ColumnName="MbEmail" />
+                <ScalarProperty Name="MbBrithday" ColumnName="MbBrithday" />
+                <ScalarProperty Name="MbCreatedDate" ColumnName="MbCreatedDate" />
+                <ScalarProperty Name="MbAccount" ColumnName="MbAccount" />
+                <ScalarProperty Name="MbPassword" ColumnName="MbPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Police">
+            <EntityTypeMapping TypeName="TIDIP_V2Model.Police">
+              <MappingFragment StoreEntitySet="Police">
+                <ScalarProperty Name="PoliceID" ColumnName="PoliceID" />
+                <ScalarProperty Name="PoliceName" ColumnName="PoliceName" />
+                <ScalarProperty Name="County_City" ColumnName="County_City" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="PoliceAddress" ColumnName="PoliceAddress" />
+                <ScalarProperty Name="PoliceCreatedDate" ColumnName="PoliceCreatedDate" />
+                <ScalarProperty Name="PoliceTel" ColumnName="PoliceTel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rescues">
+            <EntityTypeMapping TypeName="TIDIP_V2Model.Rescues">
+              <MappingFragment StoreEntitySet="Rescues">
+                <ScalarProperty Name="RescueId" ColumnName="RescueId" />
+                <ScalarProperty Name="RescueName" ColumnName="RescueName" />
+                <ScalarProperty Name="County_City" ColumnName="County_City" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="RescueAddress" ColumnName="RescueAddress" />
+                <ScalarProperty Name="RescueCreatedDate" ColumnName="RescueCreatedDate" />
+                <ScalarProperty Name="RescueTel" ColumnName="RescueTel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

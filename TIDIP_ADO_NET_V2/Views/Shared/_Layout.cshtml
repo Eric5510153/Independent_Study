@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+
+    <style>
+        .table-hover > tbody > tr:hover {
+            background-color: #ff6a00;
+        }
+
+        .table-hover_2 > tbody > tr:hover {
+            background-color: #c6fffc;
+        }
+
+        .table-hover_3 > tbody > tr:hover {
+            background-color: #c0efba;
+        }
+
+        .table-hover_4 > tbody > tr:hover {
+            background-color: #f5fbc1;
+        }
+
+        .table-hover_5 > tbody > tr:hover {
+            background-color: #afb6ff;
+        }
+    </style>
+    @RenderSection("css", false)
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ADFEDC">
+        <div class="container navbar navbar-light" style="background-color: #ADFEDC">
+            <div class="navbar navbar-light" ><strong>
+                @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>*@
+                @Html.ActionLink("台灣即時災害事故資訊平台", "Index", "Disaster_Accident", new { area = "" }, new { @class = "navbar-brand" })
+                    </strong>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("醫療單位資訊", "Index", "Medicals", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("警察單位資訊", "Index", "Police", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("緊急救護單位資訊", "Index", "Rescues", null, new { @class = "nav-link" })</li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                @if (Session["adm"] != null)
+                {
+                    <li>@Html.ActionLink("管理員管理", "Index", "Admins", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("會員管理", "Index", "Members", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("災害類型", "Index", "Disaster_Accident_Type", null, new { @class = "nav-link" })</li>
+                }
+            </ul>
+         </div>
+        <div>
+
+            @if (Session["mb"] == null && Session["adm"] == null)
+            {
+                <span align="right" class="mr-5">@Html.ActionLink("註冊會員", "Create", "Members", null, new { @class = "btn btn-info btn-sm" })</span>
+            }
+
+            @if (Session["adm"] != null)
+            {
+                <span align="right">@Html.ActionLink(" Adm登出", "Logout", "Login", null, new { @class = "btn btn-danger btn-sm" })</span>
+
+            }
+            @if (Session["adm"] == null && Session["mb"] == null)
+            {
+                <span align="right">@Html.ActionLink(" 管理員登入", "Login", "Login", null, new { @class = "btn btn-warning btn-sm" })</span>
+            }
+            @if (Session["mb"] != null)
+            {
+                <span align="right">@Html.ActionLink(" 會員登出", "MBLogout", "Login", null, new { @class = "btn btn-danger btn-sm" })</span>
+
+            }
+            @if (Session["mb"] == null && Session["adm"] == null)
+            {
+                <span align="right">@Html.ActionLink(" 會員登入", "MBLogin", "Login", null, new { @class = "btn btn-primary btn-sm" })</span>
+            }
+
+        </div>
+</nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Taiwan Disaster and Accident Information Platform </p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("scripts", false)
+</body>
+</html>

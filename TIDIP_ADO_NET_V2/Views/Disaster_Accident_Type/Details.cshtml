@@ -1,0 +1,26 @@
+﻿@model TIDIP_ADO_NET_V2.Models.Disaster_Accident_Type
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Disaster_Accident_Type</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DATypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DATypeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

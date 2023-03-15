@@ -1,0 +1,74 @@
+﻿@model TIDIP_ADO_NET_V2.Models.Members
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Members</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MbName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MbName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MbPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MbPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MbEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MbEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MbBrithday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MbBrithday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MbCreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MbCreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MbAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MbAccount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MbPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MbPassword)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MbIdentity }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,66 @@
+﻿@model TIDIP_ADO_NET_V2.Models.Rescues
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rescues</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RescueName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RescueName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.County_City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.County_City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RescueAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RescueAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RescueCreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RescueCreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RescueTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RescueTel)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RescueId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

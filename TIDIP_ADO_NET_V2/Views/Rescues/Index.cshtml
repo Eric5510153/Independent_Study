@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TIDIP_ADO_NET_V2.Models.Rescues>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RescueName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.County_City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Area)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RescueAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RescueCreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RescueTel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RescueName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.County_City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RescueAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RescueCreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RescueTel)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RescueId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RescueId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RescueId })
+        </td>
+    </tr>
+}
+
+</table>

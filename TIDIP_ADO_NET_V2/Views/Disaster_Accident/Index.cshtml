@@ -1,0 +1,157 @@
+﻿@model IEnumerable<TIDIP_ADO_NET_V2.Models.Disaster_Accident>
+
+
+@{
+    ViewBag.Title = "災害事故資訊";
+}
+
+@section css{
+
+    <style>
+        #addDisaster_Accident {
+            display: none;
+        }
+    </style>
+
+}
+
+<div class="m-3">
+    <h2><strong>災害事故資訊</strong></h2>
+</div>
+@if (Session["mb"] != null)
+{ }
+    <p>
+        <button class="btn btn-success" id="showAddForm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+            </svg>&nbsp 建立資訊
+        </button>
+    </p>
+
+<div class="well" id="addDisaster_Accident">
+    @Html.Action("Create")
+</div>
+@*<p>
+        @Html.ActionLink("新增", "Create", null, new { })
+    </p>*@
+<table class="table">
+    <tr>
+
+        <th>
+            資訊建立時間
+            @*@Html.DisplayNameFor(model => model.DACreatedDate)*@
+        </th>
+        <th>
+            災害事故縣市
+            @*@Html.DisplayNameFor(model => model.County_City)*@
+        </th>
+        <th>
+            鄉、鎮、市、區
+            @*@Html.DisplayNameFor(model => model.Area)*@
+        </th>
+        <th>
+            災害事故位置
+            @*@Html.DisplayNameFor(model => model.DALocation)*@
+        </th>
+        <th>
+            災害事故類型
+            @*@Html.DisplayNameFor(model => model.DAMessage)*@
+        </th>
+
+
+        <!--<th>
+            建立此資訊會員-->
+        @*@Html.DisplayNameFor(model => model.MbIdentity)*@
+        <!--</th>-->
+        <!--<th>-->
+        @*@Html.DisplayNameFor(model => model.Members.MbName)*@
+        <!--</th>-->
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DACreatedDate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.County_City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DALocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disaster_Accident_Type.DATypeName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.MbIdentity)
+                </td>*@
+
+
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.DAID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.DAID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DAID })*@
+
+                <button type="button" id="@item.DAID" class="btn btn-primary" data-toggle="modal" data-target="#ShowDetailModal" onclick="getDetailData(event)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z" />
+                        <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z" />
+                        <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z" />
+                    </svg>&nbsp;詳細內容
+                </button>
+
+                <!-- 管理員功能-->
+                @if (Session["adm"] != null)
+                {
+                    @Html.ActionLink(" Delete (管理員)", "Delete", new { id = item.DAID }, new { @class = "btn btn-danger btn-sm" })
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="modal fade" id="ShowDetailModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                    </svg> 關閉
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+
+            function getDetailData(evt) {
+                $('#ShowDetailModal .modal-body').load("/Disaster_Accident/Details/" + evt.target.id);
+                //'#ShowDetailModal .modal-body'  注意需要空格
+            }
+
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+            $('#showAddForm').click(function () {
+
+                $('#addDisaster_Accident').fadeToggle(800);
+            });
+
+    </script>
+}

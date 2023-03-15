@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TIDIP_ADO_NET_V2.Models.Medicals>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MedicalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.County_City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Area)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MedicalAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MedicalCreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MedicalTel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedicalName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.County_City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedicalAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedicalCreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedicalTel)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MedicalID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MedicalID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MedicalID })
+        </td>
+    </tr>
+}
+
+</table>

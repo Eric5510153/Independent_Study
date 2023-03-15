@@ -1,0 +1,74 @@
+﻿@model TIDIP_ADO_NET_V2.Models.Disaster_Accident
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Disaster_Accident</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DALocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DALocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.County_City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.County_City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DACreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DACreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAMessage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAMessage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disaster_Accident_Type.DATypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disaster_Accident_Type.DATypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Members.MbName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Members.MbName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DAID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

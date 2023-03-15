@@ -1,0 +1,66 @@
+﻿@model TIDIP_ADO_NET_V2.Models.Admins
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Admins</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AdName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdBrithday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdBrithday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdCreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdCreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdAccount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdEmail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AdIdentity }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

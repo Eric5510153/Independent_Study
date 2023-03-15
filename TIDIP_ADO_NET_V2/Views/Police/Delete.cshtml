@@ -1,0 +1,72 @@
+﻿@model TIDIP_ADO_NET_V2.Models.Police
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Police</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PoliceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoliceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.County_City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.County_City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PoliceAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoliceAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PoliceCreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoliceCreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PoliceTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoliceTel)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
