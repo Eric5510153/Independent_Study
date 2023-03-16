@@ -21,14 +21,26 @@ namespace TIDIP_ADO_NET_V2.Models
     public partial class Medicals
     {
         public int MedicalID { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "名稱為必填欄位")]
         public string MedicalName { get; set; }
+
+        [Required(ErrorMessage = "請選擇縣市地區")]
+        [StringLength(4, ErrorMessage = "請選擇縣市地區")]
         public string County_City { get; set; }
+
+        [Required(ErrorMessage = "請選擇縣市地區")]
+        [StringLength(4, ErrorMessage = "請選擇縣市地區")]
         public string Area { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "地址為必填欄位")]
         public string MedicalAddress { get; set; }
+
         public System.DateTime MedicalCreatedDate { get; set; }
-        [Required]
+
+
+
+        [Required(ErrorMessage = "地址為必填欄位")]
         public string MedicalTel { get; set; }
     }
 }

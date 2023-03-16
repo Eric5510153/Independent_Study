@@ -226,6 +226,9 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="dk-tw-citySelector.js" />
+    <Content Include="dk-tw-citySelector.min.js" />
+    <Content Include="dk_tw.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Models\Model1.Context.tt">
@@ -369,6 +372,8 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="TEST 2.html" />
+    <Content Include="test4.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

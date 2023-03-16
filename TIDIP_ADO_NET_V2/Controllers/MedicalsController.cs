@@ -38,7 +38,7 @@ namespace TIDIP_ADO_NET_V2.Controllers
         // GET: Medicals/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: Medicals/Create
@@ -60,7 +60,7 @@ namespace TIDIP_ADO_NET_V2.Controllers
 
                 return RedirectToAction("Index");
             }
-
+            
             return View(medicals);
         }
 

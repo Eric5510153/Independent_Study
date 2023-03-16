@@ -31,26 +31,29 @@
     </style>
     @RenderSection("css", false)
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    
+    <script src="../dk-tw-citySelector.js"></script>
 
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ADFEDC">
         <div class="container navbar navbar-light" style="background-color: #ADFEDC">
-            <div class="navbar navbar-light" ><strong>
-                @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>*@
-                @Html.ActionLink("台灣即時災害事故資訊平台", "Index", "Disaster_Accident", new { area = "" }, new { @class = "navbar-brand" })
-                    </strong>
+            <div class="navbar navbar-light">
+                <strong>
+                    @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>*@
+                    @Html.ActionLink("台灣即時災害事故資訊平台", "Index", "Disaster_Accident", new { area = "" }, new { @class = "navbar-brand" })
+                </strong>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("醫療單位資訊", "Index", "Medicals", null, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("警察單位資訊", "Index", "Police", null, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("緊急救護單位資訊", "Index", "Rescues", null, new { @class = "nav-link" })</li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -63,7 +66,7 @@
                     <li>@Html.ActionLink("災害類型", "Index", "Disaster_Accident_Type", null, new { @class = "nav-link" })</li>
                 }
             </ul>
-         </div>
+        </div>
         <div>
 
             @if (Session["mb"] == null && Session["adm"] == null)
@@ -91,7 +94,7 @@
             }
 
         </div>
-</nav>
+    </nav>
 
     <div class="container body-content">
         @RenderBody()
@@ -103,6 +106,8 @@
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="../dk-tw-citySelector.js"></script>
     @RenderSection("scripts", false)
 </body>
 </html>

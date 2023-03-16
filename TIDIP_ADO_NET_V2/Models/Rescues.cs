@@ -20,14 +20,18 @@ namespace TIDIP_ADO_NET_V2.Models
     public partial class Rescues
     {
         public int RescueId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "名稱為必填欄位")]
         public string RescueName { get; set; }
+        [Required(ErrorMessage = "請選擇縣市地區")]
+        [StringLength(4, ErrorMessage = "請選擇縣市地區")]
         public string County_City { get; set; }
+        [Required(ErrorMessage = "請選擇縣市地區")]
+        [StringLength(4, ErrorMessage = "請選擇縣市地區")]
         public string Area { get; set; }
-        [Required]
+        [Required(ErrorMessage = "地址為必填欄位")]
         public string RescueAddress { get; set; }
         public System.DateTime RescueCreatedDate { get; set; }
-        [Required]
+        [Required(ErrorMessage = "地址為必填欄位")]
         public string RescueTel { get; set; }
     }
 }

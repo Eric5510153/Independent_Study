@@ -23,9 +23,11 @@ namespace TIDIP_ADO_NET_V2.Models
         public int DAID { get; set; }
         [Required(ErrorMessage = "地點為必填欄位")]
         public string DALocation { get; set; }
-
+        [Required(ErrorMessage = "請選擇縣市地區")]
+        [StringLength(4, ErrorMessage = "請選擇縣市地區")]
         public string County_City { get; set; }
-
+        [Required(ErrorMessage = "請選擇縣市地區")]
+        [StringLength(4, ErrorMessage = "請選擇縣市地區")]
         public string Area { get; set; }
         public System.DateTime DACreatedDate { get; set; }
 

@@ -13,68 +13,88 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+<div class="form-horizontal">
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.RescueName, "緊急救護單位資訊", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RescueName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RescueName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <hr />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.County_City, "縣市", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.County_City, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.County_City, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Area, "鄉、鎮、市、區", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <hr />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.RescueAddress, "地址", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RescueAddress, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RescueAddress, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.RescueTel, "電話", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RescueTel, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RescueTel, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.RescueCreatedDate, "建立資訊時間", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.RescueCreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.RescueCreatedDate, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button class="btn btn-success">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-                    </svg>&nbsp建立
-                </button>
-            </div>
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RescueName, "緊急救護單位名稱", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.RescueName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.RescueName, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.County_City, "縣市", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="form-group ">
+
+                <select class="county form-control" name="County_City" id="County_City"  data-val="true" data-val-required="縣市為必填欄位"></select>
+
+            </div>
+            @*@Html.EditorFor(model => model.County_City, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.County_City, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Area, "鄉、鎮、市、區", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="form-group ">
+
+                <select class="district form-control" name="Area" id="Area"  data-val="true" data-val-required="鄉、鎮、市、區為必填欄位"></select>
+            </div>
+            @*@Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RescueAddress, "地址", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.RescueAddress, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.RescueAddress, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RescueTel, "電話", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.RescueTel, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.RescueTel, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.RescueCreatedDate, "建立資訊時間", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RescueCreatedDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RescueCreatedDate, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                </svg>&nbsp建立
+            </button>
+        </div>
+    </div>
+</div>
 }
 
 @*<div>
@@ -85,3 +105,40 @@
 
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="/dk-tw-citySelector.js"></script>
+<script>
+
+
+    $(function () {
+        $('.form-group').dk_tw_citySelector('.county', '.district', '.zipcode');
+        //$('.form-2').dk_tw_citySelector('select[name="county"]', 'select[name="district"]', 'input[name="zipcode"]');
+        //$('.form-3').dk_tw_citySelector('.county', '.district', '.zipcode');
+        //$('.form-4').dk_tw_citySelector('.county', '.district', '.zipcode');
+    });
+</script>
+
+
+
+
+<script>
+    $(function () {
+        $("#CountySelected").change(function () {
+            var displaycourse = $("#CountySelected option:selected").text();
+            $("#countyValue").val(displaycourse);
+
+
+        })
+
+    })
+</script>
+<script>
+    $(function () {
+        $("#districtSelected").change(function () {
+            var displaycourse = $("#districtSelected option:selected").text();
+            $("#districtValue").val(displaycourse);
+
+
+        })
+
+    })
+</script>
