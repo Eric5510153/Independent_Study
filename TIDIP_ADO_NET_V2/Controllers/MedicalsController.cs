@@ -20,6 +20,8 @@ namespace TIDIP_ADO_NET_V2.Controllers
             return View(db.Medicals.ToList());
         }
 
+
+
         // GET: Medicals/Details/5
         public ActionResult Details(int? id)
         {
@@ -36,6 +38,7 @@ namespace TIDIP_ADO_NET_V2.Controllers
         }
 
         // GET: Medicals/Create
+        
         public ActionResult Create()
         {
             return PartialView();
@@ -44,6 +47,7 @@ namespace TIDIP_ADO_NET_V2.Controllers
         // POST: Medicals/Create
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(/*[Bind(Include = "MedicalID,MedicalName,County_City,Area,MedicalAddress,MedicalCreatedDate,MedicalTel")] */Medicals medicals)
@@ -67,6 +71,7 @@ namespace TIDIP_ADO_NET_V2.Controllers
 
 
         // GET: Medicals/Edit/5
+       
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,6 +89,7 @@ namespace TIDIP_ADO_NET_V2.Controllers
         // POST: Medicals/Edit/5
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MedicalID,MedicalName,County_City,Area,MedicalAddress,MedicalCreatedDate,MedicalTel")] Medicals medicals)
@@ -101,6 +107,7 @@ namespace TIDIP_ADO_NET_V2.Controllers
         }
 
         // GET: Medicals/Delete/5
+        
         public ActionResult Delete(int? id)
         {
             if (id == null)
