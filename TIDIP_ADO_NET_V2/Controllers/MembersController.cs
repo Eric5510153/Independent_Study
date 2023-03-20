@@ -15,10 +15,26 @@ namespace TIDIP_ADO_NET_V2.Controllers
         private TIDIP_V2Entities2 db = new TIDIP_V2Entities2();
 
         // GET: Members
+        //public ActionResult Index()
+        //{
+        //    return View(db.Members.ToList());
+        //}
         public ActionResult Index()
         {
-            return View(db.Members.ToList());
+
+            string MbIdentity = null;
+            if (Session["mb"] != null)
+            {
+
+                MbIdentity = ((Members)Session["mb"]).MbIdentity;
+
+            }
+            var member = db.Members.Where(m => m.MbIdentity == MbIdentity || MbIdentity == null)
+                .ToList()
+                .OrderByDescending(x => x.MbIdentity);
+            return View(member);
         }
+
 
         // GET: Members/Details/5
         public ActionResult Details(string id)

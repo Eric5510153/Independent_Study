@@ -86,7 +86,7 @@
             @if (Session["mb"] != null)
             {
                 <span align="right">@Html.ActionLink(" 會員登出", "MBLogout", "Login", null, new { @class = "btn btn-danger btn-sm" })</span>
-
+                <span align="right">@Html.ActionLink(" 我的會員", "Index", "Members", null, new { @class = "btn btn-warning btn-sm " })</span>
             }
             @if (Session["mb"] == null && Session["adm"] == null)
             {
