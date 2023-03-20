@@ -36,10 +36,10 @@ namespace TIDIP_ADO_NET_V2.Models
         [Required(ErrorMessage = "電子郵件為必填欄位")]
         public string MbEmail { get; set; }
         [Required(ErrorMessage = "生日為必填欄位")]
-        
+        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}",ApplyFormatInEditMode =true)]
         public System.DateTime MbBrithday { get; set; }
 
-        
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime MbCreatedDate { get; set; }
         [Required(ErrorMessage = "帳號為必填欄位")]
         [StringLength(20, ErrorMessage = "帳號不可超過20字")]

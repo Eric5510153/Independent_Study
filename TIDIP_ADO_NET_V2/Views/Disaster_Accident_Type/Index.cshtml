@@ -9,14 +9,14 @@
 </div>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new{@class= "btn btn-success" })
 </p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.DATypeID)
         </th>
-        <th>
+        <th >
            
             @Html.DisplayNameFor(model => model.DATypeName)
         </th>
@@ -28,13 +28,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.DATypeID)
         </td>
-        <td>
+        <td cl>
             @Html.DisplayFor(modelItem => item.DATypeName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.DATypeID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.DATypeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.DATypeID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.DATypeID }, new { @class = "btn btn-warning" }) |
+
+            @Html.ActionLink("Delete", "Delete", new { id = item.DATypeID }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

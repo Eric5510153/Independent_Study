@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<hr />
+<form class="form-horizontal" method="post" action="@Url.Action("Login")">
+
+    <div class="form-group">
+
+        <label for="txtAccount" class="col-md-1">Account</label>
+
+
+        <div class="col-lg-1-md-9">
+            <input id="txtAccount" type="text" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <label for="txtPassword" class="col-md-1">Password</label>
+
+        <div class="col-lg-1-md-9">
+            <input id="txtPassword" type="text" class="form-control" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-9 col-md-offset-3">
+            <input id="Button1" type="submit" value="Login" class="btn btn-primary" />
+        </div>
+    </div>
+    <div class="text-danger">
+        @ViewBag.ErrMsg
+    </div>
+
+
+
+</form>

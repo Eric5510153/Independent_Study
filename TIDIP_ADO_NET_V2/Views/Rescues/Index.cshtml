@@ -14,6 +14,10 @@
 }
 <div class="m-3">
     <h2><strong>緊急救護單位資訊</strong></h2>
+    <div class="form-1 mt-1 float-right">
+        <select class="county light-table-filter form-control " name="" id="" type="text" data-table="table"></select>
+        <select class="district light-table-filter form-control  mt-2 " name="" id="" type="text" data-table="table"></select>
+    </div>
 </div>
 @if (Session["adm"] != null)
 {
@@ -33,7 +37,7 @@
 @*<p>
         @Html.ActionLink("Create New", "Create")
     </p>*@
-<table class="table">
+<table class="table-title" width="100%" style="table-layout:fixed">
     <tr>
         <th>
             緊急救護單位名稱
@@ -52,10 +56,10 @@
 
         </th>
         <th></th>
-        <th></th>
-        <th></th>
-    </tr>
 
+    </tr>
+</table>
+<table class="table" width="100%" style="table-layout:fixed">
     @foreach (var item in Model)
     {
         <tr>
@@ -71,8 +75,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.RescueAddress)
             </td>
-            <td></td>
-            <td></td>
+
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.RescueId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.RescueId }) |
@@ -98,6 +101,66 @@
     }
 
 </table>
+
+
+
+
+<script src="/dk-tw-citySelector.js"></script>
+<script>
+    $(function () {
+        $('.form-1').dk_tw_citySelector('.county', '.district', '.zipcode');
+
+    });
+</script>
+
+<script>
+    (function (document) {
+        'use strict';
+
+        // 建立 LightTableFilter
+        var LightTableFilter = (function (Arr) {
+
+            var _input;
+
+            // 資料輸入事件處理函數
+            function _onInputEvent(e) {
+                _input = e.target;
+                var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                Arr.forEach.call(tables, function (table) {
+                    Arr.forEach.call(table.tBodies, function (tbody) {
+                        Arr.forEach.call(tbody.rows, _filter);
+                    });
+                });
+            }
+
+            // 資料篩選函數，顯示包含關鍵字的列，其餘隱藏
+            function _filter(row) {
+                var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+            }
+
+            return {
+                // 初始化函數
+                init: function () {
+                    var inputs = document.getElementsByClassName('light-table-filter');
+                    Arr.forEach.call(inputs, function (input) {
+                        input.oninput = _onInputEvent;
+                    });
+                }
+            };
+        })(Array.prototype);
+
+        // 網頁載入完成後，啟動 LightTableFilter
+        document.addEventListener('readystatechange', function () {
+            if (document.readyState === 'complete') {
+                LightTableFilter.init();
+            }
+        });
+
+    })(document);
+
+</script>
+
 
 <hr style="border: 1px solid #ADFEDC " />
 <div>

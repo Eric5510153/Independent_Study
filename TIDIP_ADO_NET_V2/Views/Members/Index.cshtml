@@ -13,26 +13,26 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MbName)
+            姓名
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MbPhone)
+           電話/手機
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MbEmail)
+            電子信箱
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MbBrithday)
+            生日
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MbCreatedDate)
+            會員註冊時間
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MbAccount)
+            帳號
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.MbPassword)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -57,13 +57,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MbAccount)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.MbPassword)
-            </td>
+            </td>*@
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MbIdentity }) |
-                @Html.ActionLink("Details", "Details", new { id = item.MbIdentity }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MbIdentity })
+                @Html.ActionLink("Edit", "Edit", new { id = item.MbIdentity }, new {@class= "btn btn-warning" }) |
+               
+                @Html.ActionLink("Delete", "Delete", new { id = item.MbIdentity },new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

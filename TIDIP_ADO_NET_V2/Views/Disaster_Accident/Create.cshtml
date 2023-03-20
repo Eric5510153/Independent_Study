@@ -14,7 +14,7 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     @*<div class="form-group ">
-        <h5>縣市地區</h5>
+        <h5>縣市地區</h5> 
         <div class="form-1 mt-1">
             <select class="county form-control form-control-lg  " name="County_City" id="CountySelected"></select>
             <select class="district form-control form-control-lg  mt-2 " name="Area"  id="districtSelected"></select>
@@ -76,7 +76,7 @@
                 @Html.ValidationMessageFor(model => model.DATypeID, "", new { @class = "text-danger" })
             </div>
         </div>
-
+            
         <div class="form-group">
             @Html.LabelFor(model => model.DAMessage, "災害事故描述", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

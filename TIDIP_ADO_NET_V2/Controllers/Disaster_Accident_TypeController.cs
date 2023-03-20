@@ -10,6 +10,7 @@ using TIDIP_ADO_NET_V2.Models;
 
 namespace TIDIP_ADO_NET_V2.Controllers
 {
+    [LoginCheck]
     public class Disaster_Accident_TypeController : Controller
     {
         private TIDIP_V2Entities2 db = new TIDIP_V2Entities2();
@@ -48,6 +49,18 @@ namespace TIDIP_ADO_NET_V2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "DATypeID,DATypeName")] Disaster_Accident_Type disaster_Accident_Type)
         {
+
+            var DAID = db.Disaster_Accident_Type.Find(disaster_Accident_Type.DATypeID);
+            
+            if (DAID != null )
+            {
+
+                ViewBag.IDRepCheck = "Duplicate ID";
+                
+                return View(disaster_Accident_Type);
+            }
+            
+
             if (ModelState.IsValid)
             {
                 db.Disaster_Accident_Type.Add(disaster_Accident_Type);

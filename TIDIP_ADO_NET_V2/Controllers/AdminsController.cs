@@ -11,6 +11,7 @@ using TIDIP_ADO_NET_V2.Models;
 
 namespace TIDIP_ADO_NET_V2.Controllers
 {
+    [LoginCheck]
     public class AdminsController : Controller
     {
         private TIDIP_V2Entities2 db = new TIDIP_V2Entities2();
