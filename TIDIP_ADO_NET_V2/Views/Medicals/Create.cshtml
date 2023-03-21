@@ -18,7 +18,7 @@
 
     <div class="form-horizontal">
        
-        <hr />
+        
            
 
 
@@ -38,7 +38,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.County_City, "縣市", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="form-group ">
+                <div class="form-create ">
 
                     <select class="county form-control " name="County_City" id="County_City" data-val="true" data-val-required="縣市為必填欄位"></select>
                     @*<input class="form-control text-box single-line" data-val="true" data-val-required="名稱為必填欄位" id="MedicalName" name="MedicalName" type="text" value="">*@
@@ -54,7 +54,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Area, "鄉、鎮、市、區", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="form-group ">
+                <div class="form-create ">
 
                     <select class="district form-control" name="Area"  id="Area" data-val="true" data-val-required="鄉、鎮、市、區為必填欄位"></select>
 
@@ -115,18 +115,16 @@
 <script>
 
 
-        $(function () {
-            $('.form-group').dk_tw_citySelector('.county', '.district', '.zipcode');
-            //$('.form-2').dk_tw_citySelector('select[name="county"]', 'select[name="district"]', 'input[name="zipcode"]');
-            //$('.form-3').dk_tw_citySelector('.county', '.district', '.zipcode');
-            //$('.form-4').dk_tw_citySelector('.county', '.district', '.zipcode');
-        });
-    </script>
+    $(function () {
+        $('.form-create').dk_tw_citySelector('.county', '.district');
+
+    });
+</script>
 
 
 
 
-    <script>
+    @*<script>
         $(function () {
             $("#County_City").change(function () {
                 var displaycourse = $("#County_City option:selected").text();
@@ -147,5 +145,5 @@
             })
 
         })
-</script>
+</script>*@
 }

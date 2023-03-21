@@ -14,7 +14,18 @@
     </style>
 
 }
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
+
+    <script src="/dk-tw-citySelector.js"></script>
+    <script>
+        $(function () {
+            $('.form-1').dk_tw_citySelector('.county', '.district');
+
+        });
+    </script>
 <div class="mt-3">
     <div><h2><strong>災害事故資訊</strong></h2></div>
     <div class="form-1 mt-1 float-right">
@@ -87,7 +98,7 @@
         <th></th>
     </tr>
 </table>
-<table class="table" width="100%" style="table-layout:fixed">
+<table class="table table-hover_2" width="100%" style="table-layout:fixed">
 
     @foreach (var item in Model)
     {

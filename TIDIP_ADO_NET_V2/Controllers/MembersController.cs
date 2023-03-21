@@ -15,11 +15,13 @@ namespace TIDIP_ADO_NET_V2.Controllers
         private TIDIP_V2Entities2 db = new TIDIP_V2Entities2();
 
         // GET: Members
-        //public ActionResult Index()
-        //{
-        //    return View(db.Members.ToList());
-        //}
+        [LoginCheck]
         public ActionResult Index()
+        {
+            return View(db.Members.ToList());
+        }
+        [MBLoginCheck]
+        public ActionResult MbIndex()
         {
 
             string MbIdentity = null;

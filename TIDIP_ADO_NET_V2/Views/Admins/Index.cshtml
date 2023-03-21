@@ -38,9 +38,7 @@
         <th>
             @Html.DisplayNameFor(model => model.AdAccount)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AdPassword)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.AdEmail)
         </th>
@@ -62,16 +60,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AdAccount)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AdPassword)
-            </td>
+          
             <td>
                 @Html.DisplayFor(modelItem => item.AdEmail)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.AdIdentity }) |
-                @Html.ActionLink("Details", "Details", new { id = item.AdIdentity }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.AdIdentity })
+            <td class="" >
+                @Html.ActionLink("Edit", "Edit", new { id = item.AdIdentity }, new { @class = "btn btn-warning" }) |
+               
+                @Html.ActionLink("Delete", "Delete", new { id = item.AdIdentity }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

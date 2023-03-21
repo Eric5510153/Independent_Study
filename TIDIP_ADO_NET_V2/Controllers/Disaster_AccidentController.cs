@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using TIDIP_ADO_NET_V2.Models;
 
 namespace TIDIP_ADO_NET_V2.Controllers
@@ -15,6 +16,7 @@ namespace TIDIP_ADO_NET_V2.Controllers
         private TIDIP_V2Entities2 db = new TIDIP_V2Entities2();
 
         // GET: Disaster_Accident
+       
         public ActionResult Index()
         {
             var disaster_Accident = db.Disaster_Accident.Include(d => d.Disaster_Accident_Type).Include(d => d.Members);

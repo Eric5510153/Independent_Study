@@ -50,8 +50,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+
                     <li>@Html.ActionLink("醫療單位資訊", "Index", "Medicals", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("ado警察單位資訊", "PoliceIndex", "Police", null, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("警察單位資訊", "Index", "Police", null, new { @class = "nav-link" })</li>
+                    
                     <li>@Html.ActionLink("緊急救護單位資訊", "Index", "Rescues", null, new { @class = "nav-link" })</li>
 
                 </ul>
@@ -85,8 +88,8 @@
             }
             @if (Session["mb"] != null)
             {
+                <span align="right">@Html.ActionLink(" 我的會員", "MbIndex", "Members", null, new { @class = "btn btn-warning btn-sm " })</span>
                 <span align="right">@Html.ActionLink(" 會員登出", "MBLogout", "Login", null, new { @class = "btn btn-danger btn-sm" })</span>
-                <span align="right">@Html.ActionLink(" 我的會員", "Index", "Members", null, new { @class = "btn btn-warning btn-sm " })</span>
             }
             @if (Session["mb"] == null && Session["adm"] == null)
             {

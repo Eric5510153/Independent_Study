@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 <div class="mt-2">
-    <h2><strong>會員資料列表</strong></h2>
+    <h2><strong>我的會員</strong></h2>
 
 </div>
 @*<p>
@@ -61,9 +61,9 @@
                 @Html.DisplayFor(modelItem => item.MbPassword)
             </td>*@
             <td>
-                
+                @Html.ActionLink("修改我的資料", "Edit", new { id = item.MbIdentity }, new {@class= "btn btn-warning" }) 
                
-                @Html.ActionLink("Delete", "Delete", new { id = item.MbIdentity },new { @class = "btn btn-danger" })
+               
             </td>
         </tr>
     }

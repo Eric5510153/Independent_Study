@@ -6,15 +6,18 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using TIDIP_ADO_NET_V2.Models;
 
 namespace TIDIP_ADO_NET_V2.Controllers
 {
+    
     public class MedicalsController : Controller
     {
         private TIDIP_V2Entities2 db = new TIDIP_V2Entities2();
 
         // GET: Medicals
+     
         public ActionResult Index()
         {
             return View(db.Medicals.ToList());

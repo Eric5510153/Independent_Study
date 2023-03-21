@@ -14,7 +14,7 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     @*<div class="form-group ">
-        <h5>縣市地區</h5> 
+        <h5>縣市地區</h5>
         <div class="form-1 mt-1">
             <select class="county form-control form-control-lg  " name="County_City" id="CountySelected"></select>
             <select class="district form-control form-control-lg  mt-2 " name="Area"  id="districtSelected"></select>
@@ -22,40 +22,29 @@
 
 
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.County_City, "縣市", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="form-group ">
 
-        @*
-                <div class="form-group">
-                @Html.LabelFor(model => model.DACreatedDate,"資訊建立時間", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DACreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DACreatedDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        *@
+                <div class="form-create mt-1">
+                    <select class="county form-control form-control " name="County_City" id="County_City" data-val="true" data-val-required="縣市為必填欄位"></select>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.County_City, "縣市", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="form-group ">
-                    
-                    <div class="form-1 mt-1">
-                        <select class="county form-control form-control " name="County_City" id="County_City" data-val="true" data-val-required="縣市為必填欄位"></select>
-                       
-                    </div>
-                  
-                    @*@Html.EditorFor(model => model.County_City, new { htmlAttributes = new { @class = "form-control" } })*@
-                    @Html.ValidationMessageFor(model => model.County_City, "", new { @class = "text-danger" })
                 </div>
+
+                @*@Html.EditorFor(model => model.County_City, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.County_City, "", new { @class = "text-danger" })
             </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Area, "鄉、鎮、市、區", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="form-1 mt-1">
+                <div class="form-create mt-1">
                     <select class="district form-control form-control  mt-2 " name="Area" id="Area" data-val="true" data-val-required="鄉、鎮、市、區為必填欄位"></select>
 
                 </div>
-               
+
                 @*@Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
             </div>
@@ -76,7 +65,7 @@
                 @Html.ValidationMessageFor(model => model.DATypeID, "", new { @class = "text-danger" })
             </div>
         </div>
-            
+
         <div class="form-group">
             @Html.LabelFor(model => model.DAMessage, "災害事故描述", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -116,21 +105,12 @@
     <script src="/dk-tw-citySelector.js"></script>
 
 
-    <script>
-
-
-        $(function () {
-            $('.form-1').dk_tw_citySelector('.county', '.district', '.zipcode');
-            //$('.form-2').dk_tw_citySelector('select[name="county"]', 'select[name="district"]', 'input[name="zipcode"]');
-            //$('.form-3').dk_tw_citySelector('.county', '.district', '.zipcode');
-            //$('.form-4').dk_tw_citySelector('.county', '.district', '.zipcode');
-        });
-    </script>
 
 
 
 
-    <script>
+
+    @*<script>
         $(function () {
             $("#County_City").change(function () {
                 var displaycourse = $("#County_City option:selected").text();
@@ -151,6 +131,20 @@
             })
 
         })
-    </script>
+    </script>*@
+
+
+
 
 }
+
+
+    <script>
+
+
+        $(function () {
+            $('.form-create').dk_tw_citySelector('.county', '.district');
+
+        });
+    </script>
+

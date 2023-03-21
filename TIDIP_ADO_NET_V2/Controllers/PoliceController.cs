@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using TIDIP_ADO_NET_V2.Models;
 
 namespace TIDIP_ADO_NET_V2.Controllers
@@ -14,10 +15,25 @@ namespace TIDIP_ADO_NET_V2.Controllers
     {
         private TIDIP_V2Entities2 db = new TIDIP_V2Entities2();
 
-        // GET: Police
+        //GET: Police
+        GetData gd = new GetData();
+        public ActionResult PoliceIndex()
+        {
+
+            string sql = "select * from Police";
+            var police = gd.TableQuery(sql);
+
+            return View(police);
+
+
+        }
+
+        //[OutputCache(Duration = 86400, Location = OutputCacheLocation.Any)]
         public ActionResult Index()
         {
-            return View(db.Police.ToList());
+            var result = db.Police.ToList();  //.Take(100)
+
+            return View(result);
         }
 
         // GET: Police/Details/5
@@ -32,7 +48,8 @@ namespace TIDIP_ADO_NET_V2.Controllers
             {
                 return HttpNotFound();
             }
-            return PartialView(police);
+            //return PartialView(police);
+            return View(police);
         }
 
         // GET: Police/Create

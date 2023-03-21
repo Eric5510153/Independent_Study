@@ -169,6 +169,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginCheck.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MBLoginCheck.cs" />
     <Compile Include="Controllers\MedicalsController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\PoliceController.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="Models\Disaster_Accident_Type.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetData.cs" />
     <Compile Include="Models\Medicals.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -438,6 +440,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Login\MBLogin.cshtml" />
     <Content Include="Views\Members\MbCreateView.cshtml" />
+    <Content Include="Views\Members\MbIndex.cshtml" />
+    <Content Include="Views\Police\PoliceIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
